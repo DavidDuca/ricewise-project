@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Status</title>
+    <style>
+        #online {
+            width: 200px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-weight: bold;
+            color: white;
+            background-color: gray; 
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Server Status</h2>
+    <p id="statusText">Checking status...</p>
+    <div id="online">Connection</div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("data.php")
+                .then(response => response.json()) 
+                .then(data => {
+                    let statusElement = document.getElementById("statusText");
+                    let onlineElement = document.getElementById("online");
+                    console.log("Received Data:", data);
+                    if (data.status && data.color) {
+                        
+                        statusElement.innerHTML = data.status;
+                        statusElement.style.color = data.color;
+                        onlineElement.style.backgroundColor = data.color;
+                    } else {
+                        console.error("Invalid data received:", data);
+                    }
+                })
+                .catch(error => console.error("Error fetching data:", error));
+        });
+    </script> 
+</body>
+</html>

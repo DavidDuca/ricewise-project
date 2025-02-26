@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+    -webkit-user-select: none;
+    overflow-y: auto;
+}
+
+.signup-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    margin-top: 100px;
+    margin: 20px;
+    height: auto;
+    max-height: none;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 1rem;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1rem;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+@media (max-width: 767px) {
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    .signup-container {
+        padding: 20px;
+        width: 100%;
+        margin-top: 40px;
+        margin: 40px 20px;
+    }
+
+    input, select, button {
+        font-size: 1rem;
+    }
+
+    label {
+        font-size: 0.9rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .signup-container {
+        width: 90%;
+        max-width: 500px;
+        margin-top: 60px;
+        margin: 60px 20px;
+    }
+
+    input, select, button {
+        font-size: 1.1rem;
+    }
+
+    label {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 1025px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .signup-container {
+        width: 100%; 
+        max-width: 600px; 
+        margin-top: 100px; 
+        margin: 100px auto;
+        padding: 20px;
+        height: auto; 
+        max-height: none; 
+    }
+
+    input, select, button {
+        font-size: 1.2rem;
+    }
+
+    label {
+        font-size: 1.1rem;
+    }
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="icon" href="logo.png">
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+    <div class="signup-container">
+        <h1>Sign Up</h1>
+        <form id="signupForm" action="signup.php" method="POST" >
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="No">Mobile Number</label>
+                <input type="text" id="No" name="No" placeholder="Enter your Mobile No." pattern="\d*" title="Numbers only" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="text" id="age" name="age" placeholder="Enter your age" pattern="\d*" title="Numbers only" required>
+            </div>
+
+            <div class="form-group">
+                <label for="sex">Sex</label>
+                <select id="sex" name="sex" required>
+                    <option value="">Select</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="weight">Weight (kg)</label>
+                <input type="text" id="weight" name="weight" placeholder="Enter your weight" pattern="\d*" title="Numbers only" required>
+            </div>
+            <button type="submit" id="registerButton">Register</button>
+        </form>
+        <div class="login-link" style="text-align: center; margin: 10px;">
+            <p style="font-family: sans-serif; color: black;">Already have an Account? <a style="ont-family: sans-serif; color: black;" href="login.html">Login</a></p>
+        </div>
+    </div>
+    <script>
+        document.getElementById('age').addEventListener('input', function (e) {
+            this.value = this.value.replace(/[^0-9]/g, ''); 
+        });
+        document.getElementById('weight').addEventListener('input', function (e) {
+            this.value = this.value.replace(/[^0-9]/g, ''); 
+        });
+    </script>
+</body>
+</html>
