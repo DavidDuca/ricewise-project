@@ -134,6 +134,68 @@ $user_id = $_SESSION['user_id'];
                 .catch(error => console.error("Error fetching data:", error));
         });
     </script>
+        <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
+        import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-messaging.js";
+        const user_id = <?php echo json_encode($user_id); ?>;
+        const firebaseConfig = {
+            apiKey: "AIzaSyAAQQYljTV57FT01S11AC1MR9nf5VL35wo",
+            authDomain: "mywebapp-ed956.firebaseapp.com",
+            projectId: "mywebapp-ed956",
+            storageBucket: "mywebapp-ed956.appspot.com",
+            messagingSenderId: "1001107767854",
+            appId: "1:1001107767854:web:1854137e158f06a60255bf",
+            measurementId: "G-1CEB79R07R"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const messaging = getMessaging(app);
+
+        navigator.serviceWorker.register("sw.js")
+            .then(registration => {
+                getToken(messaging, {
+                    serviceWorkerRegistration: registration,
+                    vapidKey: 'BHcS9xJDxOw9kWTHr7iMaaHytibVkymJhIlKFrMR8bEhEdqGnlmmcU5vVmcbE_zC3ExoL4bXnexap0n-6yyhhwU'
+                })
+                .then((currentToken) => {
+                    if (currentToken) {
+                        console.log("Token is: " + currentToken);
+
+                        sendTokenToServer(currentToken);
+                    } else {
+                        console.log('No registration token available. Request permission to generate one.');
+                    }
+                })
+                .catch((err) => {
+                    console.log('An error occurred while retrieving token. ', err);
+                });
+            })
+            .catch((err) => {
+                console.log('Service Worker registration failed: ', err);
+            });
+
+        function sendTokenToServer(token) {
+            const data = {
+                user_id: user_id, 
+                device_token: token
+            };
+
+            fetch('save-token.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                console.log('Token saved successfully:', result);
+            })
+            .catch(error => {
+                console.error('Error saving token:', error);
+            });
+        }
+    </script>
     <script src="calcsugar.js"></script>
     <script src="script.js"></script>
     <script src="main.js"></script>

@@ -58,6 +58,12 @@
             </div>
             <button type="submit" id="registerButton">Register</button>
         </form>
+
+        <div class="form-group terms-group">
+            <input type="checkbox" id="termsCheckbox" onchange="enableNotif()">
+            <label for="termsCheckbox">I agree to the <a href="#">Terms and Conditions</a></label>
+        </div>
+        
         <div class="login-link" style="text-align: center; margin: 10px;">
             <p style="font-family: sans-serif; color: black;">Already have an Account? <a style="ont-family: sans-serif; color: black;" href="login.html">Login</a></p>
         </div>
@@ -70,5 +76,7 @@
             this.value = this.value.replace(/[^0-9]/g, ''); 
         });
     </script>
+    <script src="script.js"></script>
+    <script src="scheduler.js"></script>
 </body>
 </html>

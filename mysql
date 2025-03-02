@@ -17,3 +17,23 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `username`, `mobile_number`, `email`, `password_hash`, `age`, `sex`, `weight`, `created_at`) VALUES
 (5, 'david1234', '09637297617', 'davidduca95@gmail.com', '$2y$10$3ddWCbMxw1vFs4NWNfrzPOc9.UI.JcODXicjDrkg9QUz.NlsoLstu', 17, 'male', 55, '2025-02-08 06:19:03');
 
+CREATE TABLE `user_tokens` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `device_token` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `user_id` (`user_id`,`device_token`) USING HASH
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+//sttings
+{
+    "liveServer.settings.donotShowInfoMsg": true,
+    "php.validate.executablePath": "C:/xampp/php/php.exe",
+    "editor.minimap.enabled": false,
+    "phpserver.ip": "0.0.0.0",
+    "workbench.colorTheme": "One Dark Pro Darker",
+    "git.terminalGitEditor": true,
+    "git.autofetch": true,
+    "security.workspace.trust.untrustedFiles": "open"
+}

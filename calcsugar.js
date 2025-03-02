@@ -32,6 +32,17 @@ document.getElementById("saveButton").addEventListener("click", function(event) 
     }
 });
 
+function sendWarning(data) {
+    fetch("send-warning.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.text())
+    .then(data => console.log("✅ PHP Executed:", data))
+    .catch(error => console.error("❌ Error:", error));
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     fetch("get_sugar_intake.php")
         .then(response => response.json()) 
@@ -47,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (totalSugar >= 25) {
                     alert('Warning: You have reached 25g of sugar intake!');
+                    sendWarning(data);
                 }
 
                 function getColor(value) {
